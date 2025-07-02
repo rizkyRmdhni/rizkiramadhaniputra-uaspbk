@@ -1,0 +1,30 @@
+{
+  "product": [
+    {
+      "id": "1",
+      "nama": "Sepatu Sneakers Hitam",
+      "kategori": "Sepatu Pria",
+      "harga": 350000,
+      "warna": "Hitam",
+      "stok": {
+        "38": 4,
+        "39": 1,
+        "40": 1,
+        "41": 1
+      }
+    },
+    {
+      "id": "2",
+      "nama": "Jordan",
+      "kategori": "Sepatu Pria",
+      "harga": 25000000,
+      "warna": "merah",
+      "stok": {
+        "39": 1,
+        "40": 0,
+        "41": 0,
+        "42": 2
+      }
+    }
+  ]
+}
