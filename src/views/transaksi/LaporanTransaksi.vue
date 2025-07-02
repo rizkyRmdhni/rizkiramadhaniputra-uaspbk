@@ -1,3 +1,0 @@
-<template>
-    laporan transaksi
-</template>
