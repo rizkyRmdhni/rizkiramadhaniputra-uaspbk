@@ -6,14 +6,17 @@ import { useProductStore } from '@/stores/ProductStore'
 const store = useProductStore()
 const router = useRouter()
 
-onMounted(() => {
-  store.getProducts()
-})
-
+const isLoading = ref(true)
 const selectedProduct = ref(null)
 const selectedUkuran = ref(null)
 const stokBaru = ref(1)
 const showForm = ref(false)
+
+onMounted(async () => {
+  isLoading.value = true
+  await store.getProducts()
+  isLoading.value = false
+})
 
 const openStokForm = (product, ukuran) => {
   selectedProduct.value = product
@@ -43,7 +46,7 @@ const editProduct = (id) => {
 </script>
 
 <template>
-  <div class="p-8 bg-gradient-to-br from-gray-50 via-blue-50 to-sky-100 min-h-screen">
+  <div class="p-8 w-full bg-gradient-to-br from-gray-50 via-blue-50 to-sky-100 min-h-screen">
     <!-- Header -->
     <div class="mb-8">
       <h1 class="text-3xl font-bold text-gray-800">Daftar Produk Sepatu</h1>
@@ -51,8 +54,13 @@ const editProduct = (id) => {
       <div class="w-20 h-1 bg-gradient-to-r from-blue-500 to-sky-500 rounded-full mt-3"></div>
     </div>
 
+    <!-- Loading -->
+    <div v-if="isLoading" class="flex justify-center items-center h-48 text-blue-600 font-semibold text-lg animate-pulse">
+      🔄 Memuat data produk...
+    </div>
+
     <!-- Produk Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
         v-for="product in store.products"
         :key="product.id"
