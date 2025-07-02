@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest'
 import { setActivePinia, createPinia } from 'pinia'
-import { useProductStore } from '@/stores/ProductStore'
+import { useProductStore } from '@/stores/productStore.js'
 
 describe('Product Store - Getters', () => {
   let store
